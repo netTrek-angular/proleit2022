@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 
+const hallo = 'welt'
+
 @Component({
   selector: 'proleit-root',
   templateUrl: './app.component.html',
@@ -8,3 +10,4 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'proleit2022';
 }
+
