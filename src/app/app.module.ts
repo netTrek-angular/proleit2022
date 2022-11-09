@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { UserModule } from './user/user.module';
 import {UserComponent} from "./user/user.component";
 import { SamplesModule } from './samples/samples.module';
+import { UtilsModule } from './utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { SamplesModule } from './samples/samples.module';
     BrowserModule,
     AppRoutingModule,
     UserModule,
-    SamplesModule
+    SamplesModule,
+    UtilsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

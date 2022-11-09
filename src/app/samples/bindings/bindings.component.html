@@ -1,16 +1,39 @@
 <p>bindings works!</p>
+
+<!--
+propperty and attributes
+-->
+<img [src]="imgUrl" alt="cat">
+<img [attr.src]="imgUrl" alt="cat" [attr.aria-label]="name">
+
+<div [innerHTML]="htmlSnippet" [style.color]="color" >
+</div>
+<!--
+
+<div class="width-sample" [style.width]="size+'px'">Hallo {{size}}</div>
+-->
+
+<div class="width-sample" [style.width.%]="size/10">Hallo {{size/10}}</div>
+
+<button (click)="chgName()">clikcer</button>
+
+<!--
+Interpolation
 <ul>
   <li>{{1+1}}</li>
   <li>{{name}}</li>
   <li>Hallo {{name}}!</li>
   <li>{{getName (  ) }}</li>
-  <!--
   <li>{{getName ( prefix ) }}</li>
   <li>{{getName ( '###' ) }}</li>
-  -->
 </ul>
 <button (click)="chgName()">hshs</button>
+<hr>
 <img src="http://placekitten.com/g/{{size}}/{{size}}" alt="cat">
+<hr>
 <img src="./assets/img/{{imgFile}}" alt="cat">
+<hr>
 <img src="./assets/img/cat.jpeg" alt="cat">
+<hr>
 <img src="{{imgUrl}}" alt="cat">
+-->
