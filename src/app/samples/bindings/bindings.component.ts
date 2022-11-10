@@ -10,10 +10,11 @@ export class BindingsComponent implements OnInit {
   prefix = '***';
   imgUrl = 'http://placekitten.com/g/300/300';
   imgFile = 'cat.jpeg';
-
+  selected = false;
   size = 100;
   htmlSnippet = `<ul><li>1</li></ul><script>alert("hacked")</script>`;
   color = 'red';
+  className = 'box-red box-selected';
 
   constructor() { }
 
@@ -43,5 +44,9 @@ export class BindingsComponent implements OnInit {
         clearInterval( intervalID );
       }
     }, 100);
+  }
+
+  btnClick( evt: MouseEvent) {
+    console.log( evt )
   }
 }

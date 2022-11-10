@@ -1,21 +1,58 @@
 <p>bindings works!</p>
 
 <!--
-propperty and attributes
+
+<button (click)="btnClick( $event )">event sample</button>
 -->
+
+<!--
+<button (mouseenter)="btnClick( $event )">event sample</button>
+<button (mouseover)="btnClick( $event )">event sample</button>
+
+<div (mouseenter)="btnClick( $event )">
+  <ul>
+    <li>123</li>
+    <li>4535</li>
+    <li>123315</li>
+  </ul>
+</div>
+-->
+
+
+<!--
+propperty and attributes
+
+<div class="box-red">Hello</div>
+<div class="box-green">Hello</div>
+<div class="box-selected">Hello</div>
+
+<div [class]="className">bind class</div>
+<div class="box-red"
+     [class.box-selected]="selected"
+     (click)="selected = !selected">bind selected {{selected}}</div>
+
+-->
+
+
+
+<!--
 <img [src]="imgUrl" alt="cat">
 <img [attr.src]="imgUrl" alt="cat" [attr.aria-label]="name">
+-->
 
+<!--
 <div [innerHTML]="htmlSnippet" [style.color]="color" >
 </div>
-<!--
 
 <div class="width-sample" [style.width]="size+'px'">Hallo {{size}}</div>
 -->
 
-<div class="width-sample" [style.width.%]="size/10">Hallo {{size/10}}</div>
+<!--
 
+<div class="width-sample" [style.width.%]="size/10">Hallo {{size/10}}</div>
 <button (click)="chgName()">clikcer</button>
+-->
+
 
 <!--
 Interpolation

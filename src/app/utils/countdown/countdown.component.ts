@@ -61,5 +61,4 @@ export class CountdownComponent implements OnInit, OnDestroy {
       this.stopTimer();
     }
   }
-
 }
