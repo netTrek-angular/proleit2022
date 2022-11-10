@@ -1,12 +1,12 @@
 <h3>{{selectedUsr?.name}}</h3>
 <proleit-user-list-item
   [user]="userList[0]"
-  [class.is-selected]="selectedUsr===userList[0]"
+  [isSelected]="selectedUsr===userList[0]"
   (selectUsr)="setSelectedUser ($event)"
 >
 </proleit-user-list-item>
 <proleit-user-list-item
-  [class.is-selected]="selectedUsr===userList[1]"
+  [isSelected]="selectedUsr===userList[1]"
   [user]="userList[1]" (selectUsr)="setSelectedUser ($event)"
 >
 </proleit-user-list-item>
