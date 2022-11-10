@@ -1,0 +1,19 @@
+<p>ng-for-sample works!</p>
+
+<ng-template ngFor [ngForOf]="userList" [ngForTemplate]="itemTemo"></ng-template>
+
+<ng-template #itemTemo let-user>
+  <p>{{user?.name}}</p>
+</ng-template>
+
+
+<ul>
+  <li *ngFor="let user of userList; index as i; even as e; odd as o; first as f; last as l; count as c">
+    #{{i}} even:{{e}} odd:{{o}} first:{{f}} last:{{l}} count:{{c}} {{user?.name}}</li>
+</ul>
+
+<hr>
+
+<ul>
+  <li *ngFor="let user of userList">{{user?.name}}</li>
+</ul>

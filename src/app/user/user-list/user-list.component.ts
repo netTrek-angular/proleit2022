@@ -7,7 +7,6 @@ import {User} from "../user";
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
-
   userList: User[] = [
     { name: 'Peter', birthday: new Date()},
     { name: 'Frank'},
@@ -24,5 +23,11 @@ export class UserListComponent implements OnInit {
   setSelectedUser(usr: User) {
     this.selectedUsr =
       this.selectedUsr === usr ? undefined : usr;
+  }
+
+  confirmed(del: boolean) {
+    if (del) {
+      this.userList.pop();
+    }
   }
 }

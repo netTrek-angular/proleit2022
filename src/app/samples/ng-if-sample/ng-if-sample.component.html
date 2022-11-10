@@ -1,0 +1,33 @@
+<p>ng-if-sample works!</p>
+<!--
+<img src="{{imgUrl}}" alt="cat" *ngIf="showImage">
+-->
+<!--
+<ng-template [ngIf]="showImage">
+  <img src="{{imgUrl}}" alt="cat">
+</ng-template>
+-->
+<!--
+
+<img src="{{imgUrl}}" alt="cat" *ngIf="showImage">
+<div *ngIf="!showImage">hide img</div>
+-->
+<!--
+
+<img src="{{imgUrl}}" alt="cat" *ngIf="showImage; else noImg">
+<ng-template #noImg>
+  <div>no img selected</div>
+</ng-template>
+-->
+<ng-container *ngIf="showImage">
+  <img src="{{imgUrl}}" alt="cat">
+  <ul>
+    <li *ngFor="let ind of [1,2,3]">{{ind}}</li>
+  </ul>
+</ng-container>
+
+<div *ngIf="name as myAlias">{{myAlias}}</div>
+<div *ngIf="interval | async as count">{{count}}</div>
+
+<hr>
+<button (click)="showImage = !showImage">toggle</button>
