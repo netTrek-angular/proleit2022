@@ -18,6 +18,7 @@ export class UserListComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.warn('user list - init')
   }
 
   setSelectedUser(usr: User) {
