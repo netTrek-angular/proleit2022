@@ -18,7 +18,7 @@ export class DangerBtnDirective {
   private readonly fontWeight = 'bolder';
 
   constructor( private readonly elem: ElementRef ) {
-    console.log( this, elem )
+    // console.log( this, elem )
   }
 
   @HostListener('click')

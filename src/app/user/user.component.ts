@@ -15,10 +15,10 @@ export class UserComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    console.warn('UserComp - view init', this.userList)
+    // console.warn('UserComp - view init', this.userList)
   }
 
   ngOnInit(): void {
-    console.warn('UserComp - init')
+    // console.warn('UserComp - init')
   }
 }

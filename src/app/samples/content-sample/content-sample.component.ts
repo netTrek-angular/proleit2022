@@ -25,12 +25,12 @@ export class ContentSampleComponent implements OnInit, AfterContentInit {
   constructor() { }
 
   ngAfterContentInit(): void {
-    console.warn('ContentSampleComponent - content init', this.user, this.info, this.users )
-    console.log(this.users?.toArray());
+    // console.warn('ContentSampleComponent - content init', this.user, this.info, this.users )
+    // console.log(this.users?.toArray());
   }
 
   ngOnInit(): void {
-    console.warn('ContentSampleComponent - init', this.user, this.info)
+    // console.warn('ContentSampleComponent - init', this.user, this.info)
     if ( this.info ) {
       this.info.nativeElement.innerText = 'Hello world'
     }

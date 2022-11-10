@@ -19,7 +19,7 @@ export class BindingsComponent implements OnInit {
   constructor() { }
 
   getName(prefix: string = '') {
-    console.log('getName')
+    // console.log('getName')
     return prefix + this.name;
 
   }
@@ -47,6 +47,6 @@ export class BindingsComponent implements OnInit {
   }
 
   btnClick( evt: MouseEvent) {
-    console.log( evt )
+    // console.log( evt )
   }
 }

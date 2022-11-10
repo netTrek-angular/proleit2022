@@ -16,7 +16,7 @@ export class UserListItemComponent implements OnChanges {
   @Input()
   set isSelected(value: boolean) {
     this._isSelected = value;
-    console.log('selection changed')
+    // console.log('selection changed')
   }
 
   @Input()
@@ -36,7 +36,7 @@ export class UserListItemComponent implements OnChanges {
    // if ( (changes as any).isSelected ) {
    if ( changes.hasOwnProperty( 'isSelected') ) {
      const selected = changes['isSelected'];
-     console.log( selected.firstChange, selected.currentValue );
+     // console.log( selected.firstChange, selected.currentValue );
    }
   }
 
