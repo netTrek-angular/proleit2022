@@ -9,7 +9,7 @@ import {User} from "../user";
 export class UserListComponent implements OnInit {
 
   userList: User[] = [
-    { name: 'Peter'},
+    { name: 'Peter', birthday: new Date()},
     { name: 'Frank'},
   ];
 

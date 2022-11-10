@@ -1,7 +1,15 @@
 :host {
   display: block;
+
   &.is-selected {
     background-color: red;
+    .name-color {
+      color: white;
+    }
+  }
+
+  .name-color {
+   //color: inherit;
   }
 }
 
