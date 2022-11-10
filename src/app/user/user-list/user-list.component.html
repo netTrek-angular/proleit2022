@@ -1,14 +1,14 @@
-<h3>{{selectedUsr?.name}}</h3>
+<h3>{{user.selectedUsr?.name}}</h3>
 <proleit-user-list-item
-  *ngFor="let user of userList; even as e; odd as o"
+  *ngFor="let usr of user.userList; even as e; odd as o"
   [ngClass]="{even: e, odd: o}"
-  [user]="user"
-  [isSelected]="selectedUsr===user"
-  (selectUsr)="setSelectedUser ($event)"
+  [user]="usr"
+  [isSelected]="user.selectedUsr===usr"
+  (selectUsr)="user.setSelectedUser ($event)"
 >
 </proleit-user-list-item>
 
-<button *ngIf="userList.length > 0"
-        proleitDangerBtn="soll {{userList.slice(-1)[0].name}} entfernt werden"
+<button *ngIf="user.userList.length > 0"
+        proleitDangerBtn="soll {{user.userList.slice(-1)[0].name}} entfernt werden"
         (confirmed)="confirmed($event)"
 >del last user</button>

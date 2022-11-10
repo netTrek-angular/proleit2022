@@ -11,6 +11,9 @@ export class UserComponent implements OnInit, AfterViewInit {
   @ViewChild( UserListComponent )
   userList?: UserListComponent
 
+  constructor() {
+  }
+
   ngAfterViewInit(): void {
     console.warn('UserComp - view init', this.userList)
   }

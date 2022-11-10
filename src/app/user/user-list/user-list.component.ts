@@ -1,33 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import {User} from "../user";
+import {UserService} from "../user.service";
 
 @Component({
   selector: 'proleit-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent implements OnInit {
-  userList: User[] = [
-    { name: 'Peter', birthday: new Date()},
-    { name: 'Frank'},
-  ];
+export class UserListComponent {
 
-  selectedUsr?: User;
-
-  constructor() { }
-
-  ngOnInit(): void {
-    console.warn('user list - init')
-  }
-
-  setSelectedUser(usr: User) {
-    this.selectedUsr =
-      this.selectedUsr === usr ? undefined : usr;
+  constructor(public readonly user: UserService ) {
   }
 
   confirmed(del: boolean) {
     if (del) {
-      this.userList.pop();
+      this.user.delLastItem();
     }
   }
 }
