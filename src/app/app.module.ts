@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import {LOCALE_ID, NgModule} from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -7,6 +7,8 @@ import { UserModule } from './user/user.module';
 import {UserComponent} from "./user/user.component";
 import { SamplesModule } from './samples/samples.module';
 import { UtilsModule } from './utils/utils.module';
+
+import '@angular/common/locales/global/de'
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import { UtilsModule } from './utils/utils.module';
     SamplesModule,
     UtilsModule
   ],
-  providers: [],
+  providers: [
+    {provide: LOCALE_ID, useValue: 'de' }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

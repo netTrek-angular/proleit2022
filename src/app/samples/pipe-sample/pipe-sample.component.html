@@ -1,0 +1,48 @@
+<p>pipe-sample works!</p>
+
+<p>{{num | currency }}</p>
+<p>{{num | currency | currCal }}</p>
+<p>{{num | currency : 'EUR' : 'symbol' | currCal }}</p>
+
+<!--
+<ul>
+  <li>{{user.birthday}}</li>
+  <li>{{user.birthday | date }}</li>
+  <li>{{user.birthday | date : 'd.M.yy'}}</li>
+  <li>{{user.birthday | date : 'long'}}</li>
+  <li>{{user.birthday | date : 'short'}}</li>
+  <li>{{user.birthday | date : 'yyyy'}}</li>
+  <li>{{user.birthday | date : 'long' : '-0400'}}</li>
+  <li>{{user.birthday | date : 'long' : '+0400'}}</li>
+  <li>{{user.birthday | date : 'long' : '+0400' : 'en'}}</li>
+</ul>
+-->
+
+
+<!--
+
+<ul>
+  <li>{{num}}</li>
+  <li>{{num | currency}}</li>
+  <li>{{num | currency : 'EUR' }}</li>
+  <li>{{num | currency : 'EUR' : 'symbol' }}</li>
+  <li>{{num | currency : 'EUR' : 'code' }}</li>
+
+  <li>{{num | currency : 'EUR' : 'symbol' :undefined : 'de' }}</li>
+  <li>{{num | currency : 'EUR' : 'symbol' :'.5'}}</li>
+  <li>{{num | currency : 'EUR' : 'symbol' :'3.5' : 'en' }}</li>
+  <li>{{num | currency : 'EUR' : 'symbol' :'3.5' : 'de' }}</li>
+
+</ul>
+
+<ul>
+  <li>{{num}}</li>
+  <li>{{num | number}}</li>
+  <li>{{num | number : undefined : 'de' }}</li>
+  <li>{{num | number : '.5'}}</li>
+  <li>{{num | number : '3.5' : 'en' }}</li>
+  <li>{{num | number : '3.5' : 'de' }}</li>
+</ul>
+-->
+
+<p>{{user | json}}</p>
