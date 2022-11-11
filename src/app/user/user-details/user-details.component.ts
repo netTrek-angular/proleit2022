@@ -18,15 +18,28 @@ export class UserDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+    this.activated.data
+      .pipe(
+        tap ( console.warn ),
+        filter ( map => 'loadedUsr' in map ),
+        map ( map => map['loadedUsr'] as User )
+      )
+      .subscribe(
+        usr => this.crrUsr = usr
+    )
+
+    /*
     this.activated.paramMap.pipe(
       filter ( map => map.has( 'usrId') ),
       map ( map => Number ( map.get( 'usrId') ) ),
       filter ( id => !isNaN( id ) ),
-      tap ( console.warn ),
+      // tap ( console.warn ),
       switchMap ( id => this.user.getUser( id ) ),
-      tap ( console.warn )
+      // tap ( console.warn )
     // ).subscribe( console.warn )
     ).subscribe( next => this.crrUsr = next )
+    */
   }
 
 }

@@ -6,11 +6,18 @@ import {SamplesComponent} from "./samples/samples/samples.component";
 import {RxjsSamplesComponent} from "./samples/rxjs-samples/rxjs-samples.component";
 import {BindingsComponent} from "./samples/bindings/bindings.component";
 import {UserDetailsComponent} from "./user/user-details/user-details.component";
+import {UserDetailsResolver} from "./user/user-details.resolver";
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'user', component: UserComponent },
-  { path: 'user/:usrId', component: UserDetailsComponent },
+  { path: 'user/:usrId', component: UserDetailsComponent,
+    data: {
+      isAdmin: true
+    },
+    resolve: {
+      loadedUsr: UserDetailsResolver
+    }},
   // { path: 'countdown', component: CountdownComponent },
   { path: 'samples', component: SamplesComponent, children: [
         // {path: '', pathMatch: 'full', redirectTo: 'countdown'},
