@@ -9,7 +9,9 @@ import { SamplesModule } from './samples/samples.module';
 import { UtilsModule } from './utils/utils.module';
 
 import '@angular/common/locales/global/de'
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
+import {AppAuthInterceptor} from "./app-auth.interceptor";
+import {AppLoadingInterceptor} from "./app-loading.interceptor";
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import {HttpClientModule} from "@angular/common/http";
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de' },
+    {provide: HTTP_INTERCEPTORS, useClass: AppAuthInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: AppLoadingInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
