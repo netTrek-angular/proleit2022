@@ -8,7 +8,13 @@
 >
 </proleit-user-list-item>
 
-<button *ngIf=" user.selectedUsr$ | async as selected"
-        proleitDangerBtn="soll {{selected.name}} entfernt werden"
-        (confirmed)="confirmed($event)"
->del user</button>
+<ng-container *ngIf=" user.selectedUsr$ | async as selected; else add">
+  <button
+          proleitDangerBtn="soll {{selected.name}} entfernt werden"
+          (confirmed)="confirmed($event)"
+  >del user</button>
+  <button (click)="updateSelectedUser()">update</button>
+</ng-container>
+<ng-template #add>
+  <button (click)="createNewUser()">+</button>
+</ng-template>

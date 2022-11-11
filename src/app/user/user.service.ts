@@ -31,6 +31,26 @@ export class UserService {
     return this.http.delete( `${environment.api}/${id}` );
   }
 
+  createUsr ( usr: User ) {
+    return this.http.post<User>( environment.api, usr ).pipe(
+      tap (
+        {
+          complete: () => this.update()
+        }
+      )
+    )
+  }
+
+  updateUsr ( usr: User ) {
+    return this.http.put<User>( `${environment.api}/${usr.id}`, usr ).pipe(
+      tap (
+        {
+          complete: () => this.update()
+        }
+      )
+    )
+  }
+
   getUser (id: number ): Observable<User> {
     return this.http.get<User>( `${environment.api}/${id}` ).pipe(
       map ( user => this.serializeUser( user) )
@@ -56,11 +76,6 @@ export class UserService {
   private update() {
     console.log('update')
     this.getUsers().subscribe();
-    // this.http.get<User[]>( environment.api )
-    //   .pipe(        tap ( console.log )      )
-    //   .subscribe(        {
-    //       next: value => this.userList = value
-    //     }      );
   }
 
   private serializeUser(user: User) {

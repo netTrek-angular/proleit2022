@@ -26,4 +26,17 @@ export class UserListComponent {
       }
     )
   }
+
+  updateSelectedUser() {
+    let userWithNewBD = this.user.selectedUsr$.value;
+    if ( userWithNewBD ) {
+      userWithNewBD = {...userWithNewBD, birthday: new Date()}
+      // userWithNewBD.birthday = new Date(); - kann ggf. gefährlich sein weil referenz zu BehaviourSub
+      this.user.updateUsr(userWithNewBD).subscribe();
+    }
+  }
+
+  createNewUser (newUsr: User = {name: 'john doe ' + Date.now() }) {
+    this.user.createUsr(newUsr).subscribe();
+  }
 }
