@@ -1,4 +1,5 @@
 import {Component, HostListener, OnDestroy, OnInit} from '@angular/core';
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'proleit-countdown',
@@ -11,17 +12,16 @@ export class CountdownComponent implements OnInit, OnDestroy {
 
   private intervalID?: number;
 
-  constructor() { }
-
+  constructor(
+    private readonly router: Router,
+    private readonly active: ActivatedRoute,
+  ) { }
   ngOnInit(): void {
     this.startTimer ();
   }
-
-
   ngOnDestroy(): void {
     this.resetTimer();
   }
-
   private startTimer() {
     if ( this.intervalID !== undefined ) {
       this.resetTimer();
@@ -30,17 +30,14 @@ export class CountdownComponent implements OnInit, OnDestroy {
       () => this.increment( 10 ),
       100 );
   }
-
   private resetTimer() {
     this.percent = 0;
     this.stopTimer ();
     this.intervalID = undefined;
   }
-
   private stopTimer() {
     clearInterval( this.intervalID );
   }
-
   @HostListener ('click')
   private togglePause () {
     if ( this.percent === 100 ) {
@@ -53,12 +50,16 @@ export class CountdownComponent implements OnInit, OnDestroy {
       this.startTimer();
     }
   }
-
   private increment(step: number = 20 )  {
     let next = this.percent + step;
     this.percent = Math.min( next, 100 );
     if ( this.percent === 100 ) {
       this.stopTimer();
     }
+  }
+  back() {
+    this.router.navigate(['..'], {
+      relativeTo: this.active
+    })
   }
 }

@@ -7,7 +7,7 @@ import {RxjsSamplesComponent} from "./samples/rxjs-samples/rxjs-samples.componen
 import {BindingsComponent} from "./samples/bindings/bindings.component";
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'user'},
+  { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'user', component: UserComponent },
   // { path: 'countdown', component: CountdownComponent },
   { path: 'samples', component: SamplesComponent, children: [
@@ -16,8 +16,10 @@ const routes: Routes = [
         {path: 'rxjs', component: RxjsSamplesComponent},
         {path: 'bindings', component: BindingsComponent},
     ] },
-  { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomeModule) },
-  { path: '**', redirectTo: 'user' }
+  { path: 'home',
+    loadChildren: () => import('./home/home.module')
+      .then(m => m.HomeModule) },
+  { path: '**', redirectTo: 'home' }
 ];
 
 @NgModule({
