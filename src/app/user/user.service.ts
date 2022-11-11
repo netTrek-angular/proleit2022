@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {User} from "./user";
-import {BehaviorSubject, map, tap} from "rxjs";
+import {BehaviorSubject, map, Observable, tap} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
@@ -21,14 +21,20 @@ export class UserService {
   delLastItem (){
     this.userList.pop();
   }
+
+  getUser (id: number ): Observable<User> {
+    return this.http.get<User>( `${environment.api}/${id}` ).pipe(
+      map ( user => this.serializeUser( user) )
+    )
+  }
+
   getUsers () {
+
     return this.http.get<User[]>( environment.api )
       .pipe(
         // map ( userList => userList.map( user => ({...user, birthday: new Date (user.birthday as any)})) ),
         map ( userList => userList.map( user => {
-          if ( user.birthday && typeof user.birthday === 'string' ) {
-            user.birthday = new Date( user.birthday );
-          }
+          this.serializeUser(user);
           return user;
         }) ),
         tap ( userlist => this.userList = userlist ),
@@ -46,5 +52,12 @@ export class UserService {
     //   .subscribe(        {
     //       next: value => this.userList = value
     //     }      );
+  }
+
+  private serializeUser(user: User) {
+    if (user.birthday && typeof user.birthday === 'string') {
+      user.birthday = new Date(user.birthday);
+    }
+    return user;
   }
 }

@@ -4,7 +4,7 @@
   [ngClass]="{even: e, odd: o}"
   [user]="usr"
   [isSelected]="(user.selectedUsr$ | async)===usr"
-  (selectUsr)="user.setSelectedUser ($event)"
+  (selectUsr)="setSelectedUser ($event)"
 >
 </proleit-user-list-item>
 

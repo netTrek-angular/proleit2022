@@ -17,4 +17,13 @@ export class UserListComponent {
       this.user.delLastItem();
     }
   }
+
+  setSelectedUser(usr: User) {
+    this.user.getUser( usr.id! ).subscribe(
+      {
+        next: user => this.user.setSelectedUser (user)
+        // complete: () => console.log ('fertig') // durch complete autom unsubscribe
+      }
+    )
+  }
 }
