@@ -4,18 +4,22 @@ import {UserComponent} from './user.component';
 import {UserListComponent} from './user-list/user-list.component';
 import {UserListItemComponent} from './user-list/user-list-item/user-list-item.component';
 import {UtilsModule} from "../utils/utils.module";
+import { UserDetailsComponent } from './user-details/user-details.component';
+import {RouterLink} from "@angular/router";
 
 
 @NgModule({
   declarations: [
     UserComponent,
     UserListComponent,
-    UserListItemComponent
+    UserListItemComponent,
+    UserDetailsComponent
   ],
-    imports: [
-        CommonModule,
-        UtilsModule
-    ],
+  imports: [
+    CommonModule,
+    UtilsModule,
+    RouterLink
+  ],
   exports: [
     UserComponent
   ],

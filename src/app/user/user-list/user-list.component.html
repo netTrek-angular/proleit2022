@@ -9,6 +9,7 @@
 </proleit-user-list-item>
 
 <ng-container *ngIf=" user.selectedUsr$ | async as selected; else add">
+  <button [routerLink]="['/user', selected.id]" >show Details</button>
   <button
           proleitDangerBtn="soll {{selected.name}} entfernt werden"
           (confirmed)="confirmed($event)"

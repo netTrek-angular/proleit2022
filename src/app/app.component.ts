@@ -18,14 +18,17 @@ export class AppComponent {
     public readonly loading: AppLoadingService,
     readonly router: Router
   ) {
+    /*
     router.events.
     pipe(
       filter ( event => event instanceof NavigationEnd ),
-      map ( (event: any ) => event.url )
+      map ( event => (event as NavigationEnd).url )
     ).subscribe( console.warn )
 
     user.selectedUsr$.
     subscribe( console.warn );
+
+    */
   }
 }
 
