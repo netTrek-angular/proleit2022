@@ -1,9 +1,9 @@
-<h3>{{user.selectedUsr?.name}}</h3>
+<h3>{{(user.selectedUsr$ | async)?.name}}</h3>
 <proleit-user-list-item
   *ngFor="let usr of user.userList; even as e; odd as o"
   [ngClass]="{even: e, odd: o}"
   [user]="usr"
-  [isSelected]="user.selectedUsr===usr"
+  [isSelected]="(user.selectedUsr$ | async)===usr"
   (selectUsr)="user.setSelectedUser ($event)"
 >
 </proleit-user-list-item>

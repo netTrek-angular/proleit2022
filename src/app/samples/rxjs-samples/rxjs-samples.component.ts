@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {BehaviorSubject, find, fromEvent, map, Observable, of, Subject, Subscription, tap} from "rxjs";
+import {BehaviorSubject, find, fromEvent, map, Observable, of, Subject, Subscription, take, tap, timer} from "rxjs";
 
 @Component({
   selector: 'proleit-rxjs-samples',
@@ -12,9 +12,29 @@ export class RxjsSamplesComponent implements OnInit {
 
   ngOnInit(): void {
     // this.initOfSample ();
-    // this.initFromEvent ();
+    this.initFromEvent ();
     //this.initSubjectSample ();
-    this.initBehaviorSubjecte()
+    // this.initBehaviorSubjecte()
+    // this.initMyObsv ();
+  }
+  private initMyObsv() {
+    const observable$ = new Observable( subscriber => {
+      let counter = 0;
+      const intervalID = setInterval ( ()=> {
+        subscriber.next( ++counter );
+        console.log( 'inner', counter)
+        if ( counter === 10 ) {
+          subscriber.complete();
+        }
+      }, 100);
+      return () => {
+        clearInterval( intervalID );
+      }
+    })
+    this.subscribe( observable$.pipe( take ( 5 )), 'outer' );
+    timer( 30 ).subscribe(
+      n => this.subscribe( observable$.pipe( ), 'outer2' )
+    )
   }
 
   private initBehaviorSubjecte() {
@@ -42,7 +62,9 @@ export class RxjsSamplesComponent implements OnInit {
   private initFromEvent() {
     const observable$ = fromEvent<MouseEvent>( document, 'mousemove' )
       .pipe(
+        // tap ( {next: value => console.log ( value )} ),
         map ( event => event.clientY ),
+        // tap ( {next: value => console.log ( value )} ),
         find ( y =>y <= 0 ),
         tap ({
           complete: () => alert ( 'du willst doch nicht gehen :(')
