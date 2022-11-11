@@ -24,7 +24,13 @@ export class UserService {
   getUsers () {
     return this.http.get<User[]>( environment.api )
       .pipe(
-        map ( userList => userList.map( user => ({...user, birthday: new Date (user.birthday as any)})) ),
+        // map ( userList => userList.map( user => ({...user, birthday: new Date (user.birthday as any)})) ),
+        map ( userList => userList.map( user => {
+          if ( user.birthday && typeof user.birthday === 'string' ) {
+            user.birthday = new Date( user.birthday );
+          }
+          return user;
+        }) ),
         tap ( userlist => this.userList = userlist ),
       );
   }

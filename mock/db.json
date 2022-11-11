@@ -1,5 +1,7 @@
 {
   "users": [
-    {"id":  1, "name": "Saban", "birthday": "11-04-1973" }
+    {"id":  1, "name": "Saban", "birthday": "11-04-1973" },
+    {"id":  2, "name": "Heike" },
+    {"id":  3, "name": "Peter" }
   ]
 }
