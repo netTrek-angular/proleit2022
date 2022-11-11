@@ -1,0 +1,27 @@
+<form #myForm="ngForm" (ngSubmit)="send( myForm.value )">
+  <input type="text"
+         name="vorname"
+         required
+         placeholder="Vorname eingeben"
+         ngModel #firstName="ngModel">
+  <div ngModelGroup="userInfo">
+    <input type="text"
+           name="stadt"
+           placeholder="Stadt eingeben"
+           ngModel #city="ngModel">
+    <input type="text"
+           placeholder="Mail eingeben"
+           name="email"
+           required email
+           ngModel #mail="ngModel">
+
+    <p *ngIf="mail?.errors as err">
+      <span *ngIf="err['required']; else invalidMail">Pflichtfeld</span>
+      <ng-template #invalidMail>Ungültige Mails</ng-template>
+    </p>
+
+  </div>
+  <button [disabled]="myForm.invalid">senden</button>
+</form>
+{{myForm.value | json}}
+{{myForm.valid}}
