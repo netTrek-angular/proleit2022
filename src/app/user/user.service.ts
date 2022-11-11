@@ -16,10 +16,19 @@ export class UserService {
   }
   setSelectedUser(usr: User) {
     const crrUsr = this.selectedUsr$.value;
-    this.selectedUsr$.next( usr === crrUsr ? undefined : usr );
+    this.selectedUsr$.next( usr.id === crrUsr?.id ? undefined : usr );
   }
-  delLastItem (){
-    this.userList.pop();
+  delSelectedUsr (){
+    if ( this.selectedUsr$.value?.id ) {
+      this.deleteUser( this.selectedUsr$.value?.id ).subscribe( () => {
+        this.update();
+        this.selectedUsr$.next( undefined );
+      } )
+    }
+  }
+
+  deleteUser ( id: number ): Observable<Object> {
+    return this.http.delete( `${environment.api}/${id}` );
   }
 
   getUser (id: number ): Observable<User> {

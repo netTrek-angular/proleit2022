@@ -14,7 +14,7 @@ export class UserListComponent {
 
   confirmed(del: boolean) {
     if (del) {
-      this.user.delLastItem();
+      this.user.delSelectedUsr();
     }
   }
 

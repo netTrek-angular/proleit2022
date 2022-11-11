@@ -3,12 +3,12 @@
   *ngFor="let usr of user.userList; even as e; odd as o"
   [ngClass]="{even: e, odd: o}"
   [user]="usr"
-  [isSelected]="(user.selectedUsr$ | async)===usr"
+  [isSelected]="(user.selectedUsr$ | async)?.id===usr.id"
   (selectUsr)="setSelectedUser ($event)"
 >
 </proleit-user-list-item>
 
-<button *ngIf="user.userList.length > 0"
-        proleitDangerBtn="soll {{user.userList.slice(-1)[0].name}} entfernt werden"
+<button *ngIf=" user.selectedUsr$ | async as selected"
+        proleitDangerBtn="soll {{selected.name}} entfernt werden"
         (confirmed)="confirmed($event)"
->del last user</button>
+>del user</button>
