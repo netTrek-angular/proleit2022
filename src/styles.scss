@@ -3,3 +3,8 @@
 h1 {
   color: blue;
 }
+
+a[routerlink].active {
+  font-size: larger;
+  color: red;
+}

@@ -7,6 +7,8 @@ import { NgForSampleComponent } from './ng-for-sample/ng-for-sample.component';
 import { PipeSampleComponent } from './pipe-sample/pipe-sample.component';
 import {UtilsModule} from "../utils/utils.module";
 import { RxjsSamplesComponent } from './rxjs-samples/rxjs-samples.component';
+import { SamplesComponent } from './samples/samples.component';
+import {RouterModule, RouterOutlet} from "@angular/router";
 
 
 
@@ -17,19 +19,22 @@ import { RxjsSamplesComponent } from './rxjs-samples/rxjs-samples.component';
     NgIfSampleComponent,
     NgForSampleComponent,
     PipeSampleComponent,
-    RxjsSamplesComponent
+    RxjsSamplesComponent,
+    SamplesComponent
   ],
-    imports: [
-        CommonModule,
-        UtilsModule
-    ],
+  imports: [
+    CommonModule,
+    UtilsModule,
+    RouterModule
+  ],
     exports: [
         BindingsComponent,
         ContentSampleComponent,
         NgIfSampleComponent,
         NgForSampleComponent,
         PipeSampleComponent,
-        RxjsSamplesComponent
+        RxjsSamplesComponent,
+        SamplesComponent
     ]
 })
 export class SamplesModule { }
