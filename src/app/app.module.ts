@@ -9,6 +9,7 @@ import { SamplesModule } from './samples/samples.module';
 import { UtilsModule } from './utils/utils.module';
 
 import '@angular/common/locales/global/de'
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import '@angular/common/locales/global/de'
     AppRoutingModule,
     UserModule,
     SamplesModule,
-    UtilsModule
+    UtilsModule,
+    HttpClientModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'de' },
