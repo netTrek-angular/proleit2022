@@ -7,9 +7,14 @@ import {UserService} from "../user.service";
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss']
 })
-export class UserListComponent {
+export class UserListComponent implements OnInit {
 
   constructor(public readonly user: UserService ) {
+  }
+
+  ngOnInit(): void {
+    // to play
+    this.user.getUsersByName( 'Frank' ).subscribe( console.warn )
   }
 
   confirmed(del: boolean) {

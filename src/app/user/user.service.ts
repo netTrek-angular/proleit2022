@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {User} from "./user";
 import {BehaviorSubject, map, Observable, tap} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 
 @Injectable({
@@ -48,6 +48,17 @@ export class UserService {
           complete: () => this.update()
         }
       )
+    )
+  }
+
+  getUsersByName (name: string ): Observable<User[]> {
+    // let params : HttpParams = new HttpParams( ).set( 'name', name );
+    let params : HttpParams = new HttpParams( {fromObject: {name, birthday: '11-06-1999'}});
+    return this.http.get<User[]>( `${environment.api}`, { params } ).pipe(
+      map ( userList => userList.map( user => {
+        this.serializeUser(user);
+        return user;
+      }) ),
     )
   }
 
