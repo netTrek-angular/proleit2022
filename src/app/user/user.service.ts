@@ -1,14 +1,35 @@
 import { Injectable } from '@angular/core';
 import {User} from "./user";
-import {BehaviorSubject, map, Observable, tap} from "rxjs";
+import {BehaviorSubject, distinctUntilChanged, map, Observable, tap} from "rxjs";
 import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
+import {keyframes} from "@angular/animations";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   userList: User[] = [];
+
+  allTasks$ : BehaviorSubject<User[]> = new BehaviorSubject<User[]>( []);
+  // backlog$ = this.allTasks$.pipe(
+  //   map ( list => list.filter( task => task.id === 0 )),
+  //   distinctUntilChanged ()
+  // );
+
+  typerMap: Map <number, Observable<User[]>> = new Map()
+
+  getTasksByType ( type: number ): Observable<User[]> {
+    let b$ = this.typerMap.get( type );
+    if ( !b$ ) {
+      b$ = this.allTasks$.pipe(
+        map ( list => list.filter( task => task.id === type )),
+        distinctUntilChanged ()
+      );
+      this.typerMap.set( type, b$ );
+    }
+    return b$;
+  }
 
   selectedUsr$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>( undefined );
   constructor( private readonly http: HttpClient ) {
@@ -52,6 +73,10 @@ export class UserService {
   }
 
   getUsersByName (name: string ): Observable<User[]> {
+
+
+
+
     // let params : HttpParams = new HttpParams( ).set( 'name', name );
     let params : HttpParams = new HttpParams( {fromObject: {name, birthday: '11-06-1999'}});
     return this.http.get<User[]>( `${environment.api}`, { params } ).pipe(
