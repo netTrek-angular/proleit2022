@@ -5,10 +5,21 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {keyframes} from "@angular/animations";
 
+enum MyEnum {
+  Saban,
+  Frank
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  readonly myEnumKeys = Object.keys( MyEnum );
+  readonly myEnumValues = Object.values( MyEnum );
+  readonly myEnumList = Object.entries(MyEnum).slice( -2 ); // für string enums
+  readonly myEnumKeyVal = this.myEnumList.map(([key, value]) => ({ key, value }))
+
   userList: User[] = [];
 
   allTasks$ : BehaviorSubject<User[]> = new BehaviorSubject<User[]>( []);
@@ -33,6 +44,7 @@ export class UserService {
 
   selectedUsr$: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>( undefined );
   constructor( private readonly http: HttpClient ) {
+    debugger
     this.init();
   }
   setSelectedUser(usr: User) {
